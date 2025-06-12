@@ -1,0 +1,81 @@
+.profile-card {
+  background: linear-gradient(145deg, #1d2230, #141822);
+  border-radius: 20px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.profile-banner {
+  background: radial-gradient(circle at top center, #2c3e50 0%, #1a1f2e 100%);
+  padding: 40px 20px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.avatar-wrapper {
+  background: #e40041;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 12px rgba(255, 45, 117, 0.4);
+  font-size: 50px;
+  color: white;
+}
+
+.badge.bg-accent {
+  background-color: #e40041;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-top: 5px;
+}
+
+.info-box {
+  background-color: #212735;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.info-box label {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.info-box p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.action-tile {
+  background-color: #1b1f2e;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+  cursor: pointer;
+  color: #d4d7e2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.action-tile i {
+  font-size: 24px;
+  color: #e40041;
+}
+
+.action-tile:hover {
+  background-color: #2a2f45;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+

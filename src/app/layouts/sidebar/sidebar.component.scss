@@ -1,0 +1,50 @@
+.side-nav-link-ref{
+    margin-left: -15px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  a{
+    color: white;
+  }
+  
+  span{
+    font-size: 13px;
+    color: white;
+  }
+  
+  .bx{
+    color: #ff1a5b;
+  }
+  
+  li{
+    color: white;
+  }
+  
+  
+  .side-nav-link-ref.active-link {
+    background-color: #e40041; 
+    color: #ffffff !important; 
+    font-weight: bold; 
+    border-radius: 5px; 
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .side-nav-link-ref:hover{
+    background-color: #e40041;
+    color: #ffffff !important; 
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  
+  .side-nav-link-ref.active-link i {
+    color: #ffffff !important; 
+  }
+  
+  
+  
+  .is-parent.active-parent {
+    background-color: #64001e; 
+    color: #ffffff !important;
+  }
+  
