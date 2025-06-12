@@ -3,12 +3,10 @@
     <div class="col-lg-10">
       <div class="card login-card d-flex flex-lg-row flex-column overflow-hidden">
 
-        <!-- Imagen lateral -->
         <div class="login-img bg-cover d-none d-lg-block">
           <img src="assets/images/fondo.png" alt="login banner" class="img-fluid w-100 h-100 object-fit-cover" />
         </div>
 
-        <!-- Formulario de login -->
         <div class="p-5 flex-fill bg-dark text-white">
           <div class="text-center mb-4">
             <div class="avatar-login">
@@ -21,12 +19,14 @@
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input type="email" formControlName="email" class="form-control custom-input" id="email" placeholder="correo@ejemplo.com" />
+              <input type="email" formControlName="email" class="form-control custom-input" id="email"
+                placeholder="correo@ejemplo.com" />
             </div>
 
             <div class="mb-4">
               <label for="password" class="form-label">Contraseña</label>
-              <input type="password" formControlName="password" class="form-control custom-input" id="password" placeholder="Ingresa tu contraseña" />
+              <input type="password" formControlName="password" class="form-control custom-input" id="password"
+                placeholder="Ingresa tu contraseña" />
             </div>
 
             <div class="d-grid">
