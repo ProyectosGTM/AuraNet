@@ -1,3 +1,62 @@
+.recarga-banner-card {
+  background: #0d121d;
+  border-radius: 18px;
+  padding: 30px 40px;
+  color: #ffffff;
+  border: none !important;
+  font-family: 'Poppins', sans-serif;
+
+  .recarga-banner-content {
+    flex-wrap: wrap;
+  }
+
+  .recarga-icon {
+    background-color: #e40041;
+    border-radius: 12px;
+    padding: 18px;
+    font-size: 28px;
+    box-shadow: 0 0 10px rgba(255, 45, 117, 0.4);
+    color: #ffffff;
+  }
+
+  .recarga-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 4px;
+  }
+
+  .recarga-subtitle {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #cfcfcf;
+  }
+
+  .recarga-tagline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #bbbbbb;
+    margin-top: 15px;
+
+    .line {
+      width: 30px;
+      height: 3px;
+      background-color: #e40041;
+      border-radius: 3px;
+    }
+
+    .text {
+      font-weight: 500;
+    }
+  }
+}
+
+
+
+
 .dashboard-panel {
   background-color: #0d121d;
   padding: 40px;

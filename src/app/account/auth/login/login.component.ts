@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   submitted = false;
   error = '';
   returnUrl: string;
+  public loadingButton: boolean = false;
 
   // set the currenr year
   year: number = new Date().getFullYear();
@@ -61,31 +62,45 @@ export class LoginComponent implements OnInit, AfterViewInit {
    * Form submit
    */
   onSubmit() {
-    this.submitted = true;
+  this.submitted = true;
+  this.loadingButton = true;
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    } else {
-      if (environment.defaultauth === 'firebase') {
-        this.authenticationService.login(this.f.email.value, this.f.password.value).then((res: any) => {
-          document.body.removeAttribute('class');
-          this.router.navigate(['/']);
-        })
-          .catch(error => {
-            this.error = error ? error : '';
-          });
-      } else {
-        this.authFackservice.login(this.f.email.value, this.f.password.value)
-          .pipe(first())
-          .subscribe(
-            data => {
-              this.router.navigate(['/']);
-            },
-            error => {
-              this.error = error ? error : '';
-            });
-      }
-    }
+  if (this.loginForm.invalid) {
+    return;
   }
+
+  const finishLoading = () => {
+    setTimeout(() => {
+      this.loadingButton = false;
+      setTimeout(() => {
+        this.router.navigate(['/']);
+      }, 1000); // Espera para navegación
+    }, 2000); // Espera antes de desactivar botón
+  };
+
+  if (environment.defaultauth === 'firebase') {
+    this.authenticationService.login(this.f.email.value, this.f.password.value)
+      .then((res: any) => {
+        document.body.removeAttribute('class');
+        finishLoading();
+      })
+      .catch(error => {
+        this.error = error ? error : '';
+        this.loadingButton = false;
+      });
+  } else {
+    this.authFackservice.login(this.f.email.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          finishLoading();
+        },
+        error => {
+          this.error = error ? error : '';
+          this.loadingButton = false;
+        }
+      );
+  }
+}
+
 }

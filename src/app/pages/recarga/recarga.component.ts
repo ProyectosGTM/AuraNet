@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { fadeInRightAnimation } from 'src/app/core/fade-in-right.animation';
 
 @Component({
   selector: 'app-recarga',
   templateUrl: './recarga.component.html',
-  styleUrl: './recarga.component.scss'
+  styleUrl: './recarga.component.scss',
+  animations: [fadeInRightAnimation],
 })
 export class RecargaComponent implements OnInit {
 

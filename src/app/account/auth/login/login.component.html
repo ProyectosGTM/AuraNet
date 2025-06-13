@@ -1,7 +1,7 @@
 <div class="container-fluid login-wrapper">
   <div class="row min-vh-100 align-items-center justify-content-center">
     <div class="col-lg-10">
-      <div class="card login-card d-flex flex-lg-row flex-column overflow-hidden">
+      <div class="card login-card d-flex flex-lg-row flex-column overflow-hidden animate-slide-up">
 
         <div class="login-img bg-cover d-none d-lg-block">
           <img src="assets/images/fondo.png" alt="login banner" class="img-fluid w-100 h-100 object-fit-cover" />
@@ -30,12 +30,17 @@
             </div>
 
             <div class="d-grid">
-              <button class="btn btn-accent btn-lg" type="submit">Iniciar sesión</button>
+              <button class="btn btn-accent btn-lg" type="submit">
+                <span class="loader" *ngIf="loadingButton"></span>
+                <span class="textButton">
+                  Iniciar Sesión
+                </span>
+              </button>
             </div>
 
-            <div class="text-center mt-3">
+            <!-- <div class="text-center mt-3">
               <a href="#" class="link-light small">Olvidaste tu contraseña?</a>
-            </div>
+            </div> -->
           </form>
         </div>
 

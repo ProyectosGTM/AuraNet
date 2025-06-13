@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { revenueBarChart, statData } from './data';
 
 import { ChartType } from './profile.model';
+import { fadeInRightAnimation } from 'src/app/core/fade-in-right.animation';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
+  animations: [fadeInRightAnimation],
 })
 
 /**

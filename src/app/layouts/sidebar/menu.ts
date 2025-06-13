@@ -8,7 +8,7 @@ export const MENU: MenuItem[] = [
     },
     {
         id: 2,
-        label: 'MENUITEMS.DASHBOARDS.TEXT',
+        label: 'Tablero',
         icon: 'uil-home-alt',
         link: '/',
     },

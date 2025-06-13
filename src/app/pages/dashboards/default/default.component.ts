@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { transactions, lineColumAreaChart, revenueColumnChart, customerRadialBarChart, orderRadialBarChart, growthColumnChart} from './data';
 
 import { ChartType } from './dashboard.model';
+import { fadeInRightAnimation } from 'src/app/core/fade-in-right.animation';
 
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
-  styleUrls: ['./default.component.scss']
+  styleUrls: ['./default.component.scss'],
+  animations: [fadeInRightAnimation],
 })
 
 export class DefaultComponent implements OnInit {
