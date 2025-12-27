@@ -1,4 +1,3 @@
-
 <div class="vertical-menu" style="background-color: #0d121d;">
 
   <!-- LOGO -->
@@ -21,16 +20,20 @@
       </span>
     </a>
   </div>
+
   <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn" (click)="toggleMobileMenu($event)">
     <i class="fa fa-fw fa-bars"></i>
   </button>
+
   @if(isCondensed){
-  <ngx-simplebar class="sidebar-menu-scroll" #componentRef>
-    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-  </ngx-simplebar>}@else{
-  <ngx-simplebar class="sidebar-menu-scroll" #componentRef>
-    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-  </ngx-simplebar>}
+    <ngx-simplebar class="sidebar-menu-scroll" #componentRef>
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </ngx-simplebar>
+  }@else{
+    <ngx-simplebar class="sidebar-menu-scroll" #componentRef>
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </ngx-simplebar>
+  }
 
 </div>
 
@@ -44,6 +47,7 @@
       <ng-container *ngIf="!item.permiso || hasPermission(item.permiso)">
         @if(item.isTitle){
         <li class="menu-title">{{ item.label | translate}}</li>}
+
         <!-- Layouts menu -->
         @if (item.isLayout) {
         <li>
@@ -68,52 +72,84 @@
         </li>
         }
         <!-- end Layout menu -->
+
         @if(!item.isTitle && !item.isLayout){
           <li *ngIf="!item.isTitle && !item.isLayout && hasItems(item)">
             <ng-container *ngIf="hasItems(item)">
-              <a href="javascript:void(0);" class="is-parent" style="color: white;" [ngClass]="{'has-arrow': !item.badge, 'has-dropdown': item.badge}">
-                <i *ngIf="item.icon" style="color: white;" class="bx {{ item.icon }}"></i>
+              <a href="javascript:void(0);"
+                 class="is-parent side-nav-link-ref"
+                 [ngClass]="{'has-arrow': !item.badge, 'has-dropdown': item.badge}">
+                <i *ngIf="item.icon" class="bx {{ item.icon }}"></i>
                 <span>{{ item.label | translate }}</span>
-                <span *ngIf="item.badge" class="badge rounded-pill bg-{{item.badge.variant}} float-end">{{item.badge.text | translate}}</span>
+                <span *ngIf="item.badge" class="badge rounded-pill bg-{{item.badge.variant}} float-end">
+                  {{item.badge.text | translate}}
+                </span>
               </a>
+
               <ul class="sub-menu" aria-expanded="false">
                 <ng-container *ngFor="let subitem of item.subItems">
-                  <li *ngIf="!subitem.subItems || !hasItems(subitem)">
+
+                  <!-- SUBITEM SIMPLE (NUEVO: routerLinkActive en el <a>) -->
+                  <li *ngIf="!subitem.subItems || !hasItems(subitem)"
+                      routerLinkActive="active-li"
+                      [routerLinkActiveOptions]="{ exact: true }">
                     <ng-container *ngIf="!subitem.permiso || hasPermission(subitem.permiso)">
-                      <a [routerLink]="subitem.link" style="color: white;" class="side-nav-link-ref" routerLinkActive="active-link">
+                      <a [routerLink]="subitem.link"
+                         style="color: white;"
+                         class="side-nav-link-ref"
+                         routerLinkActive="active-link"
+                         [routerLinkActiveOptions]="{ exact: false }">
                         {{ subitem.label | translate }}
-                        <span *ngIf="subitem.badge" class="badge rounded-pill bg-{{subitem.badge.variant}} float-end">{{ subitem.badge.text | translate }}</span>
+                        <span *ngIf="subitem.badge" class="badge rounded-pill bg-{{subitem.badge.variant}} float-end">
+                          {{ subitem.badge.text | translate }}
+                        </span>
                       </a>
                     </ng-container>
                   </li>
+
+                  <!-- SUBITEM CON SUBSUBITEMS (se deja igual) -->
                   <li *ngIf="subitem.subItems && hasItems(subitem)">
                     <a href="javascript:void(0);" class="has-arrow">{{ subitem.label | translate }}</a>
                     <ul class="sub-menu mm-collapse" aria-expanded="false">
                       <ng-container *ngFor="let subSubitem of subitem.subItems">
                         <ng-container *ngIf="!subSubitem.permiso || hasPermission(subSubitem.permiso)">
                           <li>
-                            <a [routerLink]="subSubitem.link" class="side-nav-link-ref"
-                            routerLinkActive="active-link" style="margin-left: -9px; font-size: 13px;">
+                            <a [routerLink]="subSubitem.link"
+                               class="side-nav-link-ref"
+                               routerLinkActive="active-link"
+                               [routerLinkActiveOptions]="{ exact: false }"
+                               style="margin-left: -9px; font-size: 13px;">
                               {{ subSubitem.label | translate }}
-                              <span *ngIf="subSubitem.badge" class="badge rounded-pill bg-{{subSubitem.badge.variant}} float-end">{{ subSubitem.badge.text | translate }}</span>
+                              <span *ngIf="subSubitem.badge" class="badge rounded-pill bg-{{subSubitem.badge.variant}} float-end">
+                                {{ subSubitem.badge.text | translate }}
+                              </span>
                             </a>
                           </li>
                         </ng-container>
                       </ng-container>
                     </ul>
                   </li>
+
                 </ng-container>
               </ul>
             </ng-container>
           </li>
+
+          <!-- ITEM SIMPLE (se deja igual, solo no toco nada) -->
           <li *ngIf="!item.isTitle && !item.isLayout && !hasItems(item) && (!item.permiso || hasPermission(item.permiso))">
-            <a [routerLink]="item.link" style="color: #ff1a5b;" class="side-nav-link-ref"  [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active-link">
+            <a [routerLink]="item.link"
+               style="color: #ff1a5b;"
+               class="side-nav-link-ref"
+               [routerLinkActiveOptions]="{ exact: true }"
+               routerLinkActive="active-link">
               <i *ngIf="item.icon" class="bx {{ item.icon }}"></i>
               <span>{{ item.label | translate }}</span>
-              <span *ngIf="item.badge" class="badge rounded-pill bg-{{item.badge.variant}} float-end">{{item.badge.text | translate}}</span>
+              <span *ngIf="item.badge" class="badge rounded-pill bg-{{item.badge.variant}} float-end">
+                {{item.badge.text | translate}}
+              </span>
             </a>
           </li>
-      }
+        }
       </ng-container>
       }
     </ul>

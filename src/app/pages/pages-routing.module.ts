@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
 
   { path: 'recarga', loadChildren: () => import('./recarga/recarga.module').then(m => m.RecargaModule)},
+  { path: 'modulos', loadChildren: () => import('./modulos/modulos.module').then(m => m.ModulosModule)},
 ];
 
 @NgModule({
