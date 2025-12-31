@@ -446,3 +446,95 @@
     transform: rotate(360deg);
   }
 } 
+
+.login-wrapper {
+  padding: clamp(14px, 3vw, 30px);
+}
+
+.login-shell {
+  width: min(1080px, 100%);
+  grid-template-columns: 1.05fr 1fr;
+}
+
+.login-visual {
+  padding: clamp(16px, 3vw, 32px);
+  gap: clamp(14px, 2.2vw, 22px);
+}
+
+.login-panel {
+  padding: clamp(18px, 3vw, 34px);
+}
+
+.panel-title {
+  font-size: clamp(18px, 2.2vw, 22px);
+}
+
+.panel-subtitle {
+  font-size: clamp(12px, 1.6vw, 13px);
+}
+
+.brand-title {
+  font-size: clamp(16px, 2vw, 18px);
+}
+
+.brand-subtitle {
+  font-size: clamp(12px, 1.6vw, 13px);
+}
+
+.visual-image-wrap {
+  max-width: 100%;
+}
+
+.visual-image {
+  height: clamp(200px, 32vw, 360px);
+}
+
+.row-actions {
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+
+.btn-main,
+.btn-ghost {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual {
+    border-right: 0;
+    border-bottom: 1px solid rgba(46, 46, 46, 0.75);
+    align-items: center;
+    text-align: center;
+  }
+
+  .brand-center {
+    justify-content: center;
+  }
+
+  .brand-title,
+  .brand-subtitle {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-title,
+  .brand-subtitle {
+    text-align: center;
+  }
+
+  .custom-input {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+}

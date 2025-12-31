@@ -3,13 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { ModulosRoutingModule } from './modulos-routing.module';
 import { ListaModulosComponent } from './lista-modulos/lista-modulos.component';
+import { DxDataGridModule, DxLoadPanelModule } from 'devextreme-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AgregarModuloComponent } from './agregar-modulo/agregar-modulo.component';
 
 
 @NgModule({
-  declarations: [ListaModulosComponent],
+  declarations: [ListaModulosComponent, AgregarModuloComponent],
   imports: [
     CommonModule,
-    ModulosRoutingModule
+    ModulosRoutingModule,
+    DxDataGridModule,
+    DxLoadPanelModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule
   ]
 })
 export class ModulosModule { }

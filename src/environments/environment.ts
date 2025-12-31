@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+  stripe_token: 'STRIPE_TOKEN',
+  paypal_token: 'PAYPAL_TOKEN',
+  //API  Desarrollo
+  API_SECURITY: 'https://transmovi.mx/apidev',
   defaultauth: 'fackbackend',
   firebaseConfig: {
     apiKey: '',
@@ -15,6 +19,9 @@ export const environment = {
     appId: '',
     measurementId: ''
   }
+  
+  //API Productivo
+  // API_SECURITY: 'https://transmovi.mx/api',
 };
 
 /*

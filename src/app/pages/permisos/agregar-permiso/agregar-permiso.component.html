@@ -8,7 +8,7 @@
                             <i class="fas fa-plus"></i>
                         </div>
                         <div>
-                            <h4 class="title-title">Agregar Módulo</h4>
+                            <h4 class="title-title">Agregar Permiso</h4>
                             <p class="title-subtitle">Captura la información requerida para el registro.</p>
                         </div>
                     </div>
@@ -20,10 +20,36 @@
                     </div>
                 </div>
                 <div class="row mt-3 gy-4">
-                    <form [formGroup]="moduloForm">
+                    <form [formGroup]="permisoForm">
                         <div class="col-12">
                             <div class="row g-3">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-4">
+                                    <label class="field">
+                                        <span class="field-label text-white">Módulo</span>
+                                        <div class="input-sleek select-sleek" [class.is-open]="isTipoOpen" (mousedown)="toggleTipo($event)">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <div class="sleek-control select-display">
+                                                <span class="select-value"
+                                                    [class.placeholder]="!permisoForm.get('tipo')?.value">
+                                                    {{ tipoLabel || 'Selecciona un tipo...' }}
+                                                </span>
+                                            </div>
+                                            <span class="sleek-line"></span>
+                                            <div class="select-panel" *ngIf="isTipoOpen"
+                                                (mousedown)="$event.stopPropagation()">
+                                                <button type="button" class="select-option"
+                                                    (mousedown)="setTipo('ver', 'Ver', $event)">Ver</button>
+                                                <button type="button" class="select-option"
+                                                    (mousedown)="setTipo('crear', 'Crear', $event)">Crear</button>
+                                                <button type="button" class="select-option"
+                                                    (mousedown)="setTipo('editar', 'Editar', $event)">Editar</button>
+                                                <button type="button" class="select-option"
+                                                    (mousedown)="setTipo('eliminar', 'Eliminar', $event)">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-4">
                                     <label class="field">
                                         <span class="field-label text-white">Nombre</span>
                                         <div class="input-sleek">
@@ -34,7 +60,7 @@
                                         </div>
                                     </label>
                                 </div>
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-4">
                                     <label class="field">
                                         <span class="field-label text-white">Descripción</span>
                                         <div class="input-sleek input-sleek--textarea">

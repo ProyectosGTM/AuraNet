@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  defaultauth: 'fackbackend',
+  API_SECURITY: 'https://transmovi.mx/apidev',
   firebaseConfig: {
     apiKey: '',
     authDomain: '',
@@ -10,5 +10,6 @@ export const environment = {
     messagingSenderId: '',
     appId: '',
     measurementId: ''
-  }
+  },
+  defaultauth: 'fackbackend',
 };
