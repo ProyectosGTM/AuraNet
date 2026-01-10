@@ -7,6 +7,16 @@ export const MENU: MenuItem[] = [
         isTitle: true
     },
     {
+        id: 7,
+        label: 'Principal',
+        icon: 'uil-home-alt',
+        subItems: [
+            { id: 8, label: 'Tablero', link: '/dashboard' },
+            { id: 9, label: 'POS', link: '/recarga' },
+            { id: 10, label: 'Perfil', link: '/contacts/profile' }
+        ]
+    },
+    {
         id: 27,
         label: 'Administración',
         icon: 'uil-users-alt',
@@ -26,23 +36,14 @@ export const MENU: MenuItem[] = [
         icon: 'uil-layer-group',
         subItems: [
             { id: 3, label: 'Clientes', link: '/clientes' },
-            { id: 4, label: 'Cadenas', link: '/cadenas' },
             { id: 5, label: 'Salas', link: '/salas' },
+            { id: 4, label: 'Zonas', link: '/zonas' },
             { id: 6, label: 'Maquinas', link: '/maquinas' }
         ]
     },
 
     // --- AGRUPADO: Tablero / POS / Perfil
-    {
-        id: 7,
-        label: 'Principal',
-        icon: 'uil-home-alt',
-        subItems: [
-            { id: 8, label: 'Tablero', link: '/' },
-            { id: 9, label: 'POS', link: '/recarga' },
-            { id: 10, label: 'Perfil', link: '/contacts/profile' }
-        ]
-    },
+    
 
     // --- NO AGRUPADOS (se quedan solos)
     { id: 11, label: 'Monederos', icon: 'uil-moneybag-alt', link: '/monederos' },
@@ -69,6 +70,7 @@ export const MENU: MenuItem[] = [
     { id: 24, label: 'Número de Identificación', icon: 'uil-credit-card', link: '/numero-identificacion' },
     { id: 25, label: 'Moneda', icon: 'uil-dollar-sign', link: '/moneda' },
     { id: 26, label: 'Cantidad Recibida', icon: 'uil-invoice', link: '/cantidad-recibida' },
+    { id: 27, label: 'Monitoreo', icon: 'uil-map', link: '/monitoreo' },
 
     // --- AGRUPADO: Usuarios / Permisos / Roles / Modulos / Bitacora
 

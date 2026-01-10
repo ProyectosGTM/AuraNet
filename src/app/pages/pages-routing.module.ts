@@ -8,7 +8,7 @@ import { FileManagerComponent } from './file-manager/file-manager.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'dashboard' },
-  { path: '', component: DefaultComponent },
+  { path: 'dashboard', component: DefaultComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'chat', component: ChatComponent },
   { path:'file-manager',component:FileManagerComponent},
@@ -28,6 +28,12 @@ const routes: Routes = [
   { path: 'recarga', loadChildren: () => import('./recarga/recarga.module').then(m => m.RecargaModule)},
   { path: 'modulos', loadChildren: () => import('./modulos/modulos.module').then(m => m.ModulosModule)},
   { path: 'permisos', loadChildren: () => import('./permisos/permisos.module').then(m => m.PermisosModule)},
+  { path: 'roles', loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule)},
+  { path: 'usuarios', loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule)},
+  { path: 'bitacora', loadChildren: () => import('./bitacora/bitacora.module').then(m => m.BitacoraModule)},
+  { path: 'clientes', loadChildren: () => import('./clientes/clientes.module').then(m => m.ClientesModule)},
+  { path: 'salas', loadChildren: () => import('./salas/salas.module').then(m => m.SalasModule)},
+  { path: 'monitoreo', loadChildren: () => import('./monitoreo/monitoreo.module').then(m => m.MonitoreoModule)},
 ];
 
 @NgModule({

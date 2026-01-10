@@ -1,0 +1,138 @@
+<div class="container-fluid" [@fadeInRight]>
+    <div class="row">
+        <div class="col-12">
+            <div class="title-banner-card shadow-sm">
+                <div class="row mt-1">
+                    <div class="monitoreo-shell">
+                        <div
+                            class="title-banner-content d-flex align-items-center justify-content-between flex-wrap p-1 pb-0">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="title-icon">
+                                    <i class="fas fa-archive"></i>
+                                </div>
+                                <div>
+                                    <h4 class="title-title">Apartado de Módulos</h4>
+                                    <p class="title-subtitle">
+                                        Administra los componentes activos del sistema
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="monitoreo-grid">
+                            <aside class="panel">
+                                <div class="panel-top">
+                                    <div class="panel-title">
+                                        <span class="dot"></span>
+                                        Casinos
+                                        <span class="count">{{ filteredCasinos.length }}</span>
+                                    </div>
+                                    <div class="panel-search">
+                                        <i class="fas fa-search"></i>
+                                        <input type="text" placeholder="Buscar casino..." [(ngModel)]="query"
+                                            (ngModelChange)="applyFilters()" />
+                                        <button class="clear" type="button" *ngIf="query" (click)="clearSearch()">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="panel-chips">
+                                        <button type="button" class="chip" [class.active]="statusFilter === 'ALL'"
+                                            (click)="setStatus('ALL')">Todos</button>
+                                        <button type="button" class="chip" [class.active]="statusFilter === 'ONLINE'"
+                                            (click)="setStatus('ONLINE')">Online</button>
+                                        <button type="button" class="chip" [class.active]="statusFilter === 'OFFLINE'"
+                                            (click)="setStatus('OFFLINE')">Offline</button>
+                                    </div>
+                                </div>
+                                <div class="panel-list">
+                                    <button type="button" class="casino-item"
+                                        *ngFor="let c of filteredCasinos; trackBy: trackById"
+                                        [class.active]="selectedCasino?.id === c.id" (click)="selectCasino(c)">
+                                        <div class="ci-left">
+                                            <div class="ci-badge" [class.online]="c.status==='ONLINE'"
+                                                [class.offline]="c.status==='OFFLINE'"
+                                                [class.alert]="c.status==='ALERT'">
+                                                <span></span>
+                                            </div>
+                                        </div>
+                                        <div class="ci-mid">
+                                            <div class="ci-name">
+                                                {{ c.client }}
+                                            </div>
+
+                                            <div class="ci-meta">
+                                                <span class="ci-time">{{ c.name }}</span>
+                                                <span class="ci-sep">•</span>
+                                                <span class="ci-city">{{ c.city }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="ci-right">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="panel-detail" *ngIf="selectedCasino as s">
+                                    <div class="pd-head">
+                                        <div class="pd-title">{{ s.client }} · {{ s.name }}</div>
+
+                                        <div class="pd-status" [class.online]="s.status==='ONLINE'"
+                                            [class.offline]="s.status==='OFFLINE'" [class.alert]="s.status==='ALERT'">
+                                            <span class="pd-dot"></span>
+                                            <span class="pd-text">{{ getStatusLabel(s.status) }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="pd-body">
+                                        <div class="pd-row">
+                                            <div class="pd-k">Ciudad</div>
+                                            <div class="pd-v">{{ s.city }}</div>
+                                        </div>
+                                        <div class="pd-row">
+                                            <div class="pd-k">Dirección</div>
+                                            <div class="pd-v">{{ s.address }}</div>
+                                        </div>
+                                        <div class="pd-row">
+                                            <div class="pd-k">Última actualización</div>
+                                            <div class="pd-v">{{ s.updatedAt }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="pd-actions">
+                                        <button type="button" class="btn-ghost" (click)="centerOnSelected()">
+                                            <i class="fas fa-crosshairs"></i>
+                                            Centrar
+                                        </button>
+                                        <button type="button" class="btn-primary">
+                                            <i class="fas fa-route"></i>
+                                            Sala
+                                        </button>
+                                    </div>
+                                </div>
+                            </aside>
+                            <section class="map-wrap">
+                                <div class="map-topbar">
+                                    <div class="mt-left">
+                                        <div class="mt-chip">
+                                            <span class="shine"></span>
+                                            <i class="fas fa-satellite-dish"></i>
+                                            <span>En vivo</span>
+                                        </div>
+                                        <div class="mt-hint">Haz click en un marcador o selecciona un casino</div>
+                                    </div>
+                                    <div class="mt-right">
+                                        <button type="button" class="icon-btn" (click)="fitAll()">
+                                            <i class="fas fa-expand"></i>
+                                        </button>
+                                        <button type="button" class="icon-btn" (click)="toggleMapStyle()">
+                                            <i class="fas fa-layer-group"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="map"></div>
+                                <div class="map-glow"></div>
+                                <div class="map-gradient"></div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

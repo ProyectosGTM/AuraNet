@@ -1,0 +1,314 @@
+<div class="container-fluid" [@fadeInRight]>
+    <div class="row">
+        <div class="col-12">
+            <div class="title-banner-card shadow-sm">
+                <div class="title-banner-content d-flex align-items-center justify-content-between flex-wrap p-1 pb-0">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="title-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div>
+                            <h4 class="title-title">Agregar Usuario</h4>
+                            <p class="title-subtitle">Captura la información requerida para el registro.</p>
+                        </div>
+                    </div>
+                    <div class="title-actions">
+                        <div class="title-tagline">
+                            <span class="line"></span>
+                            <span class="text">Control y configuración centralizada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 gy-4">
+                    <form [formGroup]="usuarioForm">
+                        <div class="col-12">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label class="field">
+                                        <span class="field-label text-white">Nombre</span>
+                                        <div class="input-sleek">
+                                            <i class="fas fa-user"></i>
+                                            <input formControlName="nombre" class="sleek-control" type="text"
+                                                placeholder="Nombre" />
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label class="field">
+                                        <span class="field-label text-white">Apellido Paterno</span>
+                                        <div class="input-sleek">
+                                            <i class="fas fa-user"></i>
+                                            <input formControlName="apellidoPaterno" class="sleek-control" type="text"
+                                                placeholder="Apellido Paterno" />
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label class="field">
+                                        <span class="field-label text-white">Apellido Materno</span>
+                                        <div class="input-sleek">
+                                            <i class="fas fa-user"></i>
+                                            <input formControlName="apellidoMaterno" class="sleek-control" type="text"
+                                                placeholder="Apellido Materno" />
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4" *ngIf="inputContrasena">
+                                    <label class="field">
+                                        <span class="field-label text-white">Correo Electrónico</span>
+                                        <div class="input-sleek">
+                                            <i class="fas fa-envelope"></i>
+                                            <input formControlName="userName" class="sleek-control" type="email"
+                                                placeholder="correo@dominio.com" />
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label class="field">
+                                        <span class="field-label text-white">Teléfono</span>
+                                        <div class="input-sleek">
+                                            <i class="fas fa-phone"></i>
+                                            <input formControlName="telefono" class="sleek-control" type="text"
+                                                placeholder="Teléfono" maxlength="10"
+                                                (keypress)="allowOnlyNumbers($event)" />
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <label class="field">
+                                        <span class="field-label text-white">Rol</span>
+                                        <div class="input-sleek select-sleek" [class.is-open]="isRolOpen"
+                                            (mousedown)="toggleRol($event)">
+                                            <i class="fas fa-user-shield"></i>
+                                            <div class="sleek-control select-display">
+                                                <span class="select-value"
+                                                    [class.placeholder]="!usuarioForm.get('idRol')?.value">
+                                                    {{ rolLabel || 'Selecciona un rol...' }}
+                                                </span>
+                                            </div>
+                                            <span class="sleek-line"></span>
+                                            <div class="select-panel" *ngIf="isRolOpen"
+                                                (mousedown)="$event.stopPropagation()">
+                                                <button type="button" class="select-option" *ngFor="let r of listaRoles"
+                                                    (mousedown)="setRol(r.id, r.nombre, $event)">
+                                                    {{ r.nombre }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <label class="field">
+                                        <span class="field-label text-white">Cliente</span>
+                                        <div class="input-sleek select-sleek" [class.is-open]="isClienteOpen"
+                                            (mousedown)="toggleCliente($event)">
+                                            <i class="fas fa-building"></i>
+                                            <div class="sleek-control select-display">
+                                                <span class="select-value"
+                                                    [class.placeholder]="!usuarioForm.get('idCliente')?.value">
+                                                    {{ clienteLabel || 'Selecciona un cliente...' }}
+                                                </span>
+                                            </div>
+                                            <span class="sleek-line"></span>
+                                            <div class="select-panel" *ngIf="isClienteOpen"
+                                                (mousedown)="$event.stopPropagation()">
+                                                <button type="button" class="select-option"
+                                                    *ngFor="let c of listaClientes"
+                                                    (mousedown)="setCliente(c.id, c.nombre, $event)">
+                                                    {{ c.nombre }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4" *ngIf="inputContrasena">
+                                    <label class="field">
+                                        <span class="field-label text-white">Contraseña</span>
+                                        <div class="input-sleek input-sleek--eye-right">
+                                            <i class="fas fa-lock"></i>
+                                            <input formControlName="passwordHash" class="sleek-control"
+                                                [type]="hidePass ? 'password' : 'text'" placeholder="Contraseña"
+                                                autocomplete="new-password" name="new-password" autocapitalize="off"
+                                                spellcheck="false" (focus)="onPwdFocus()" (input)="onPwdInput($event)"
+                                                (blur)="onPwdBlur()" />
+
+                                            <button type="button" class="eyeButton eyeButton--right"
+                                                (mousedown)="$event.preventDefault()" (click)="togglePass()">
+                                                <i class="fas" [ngClass]="hidePass ? 'fa-eye' : 'fa-eye-slash'"></i>
+                                            </button>
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                    <div class="pwd-validate" *ngIf="showPwdHints">
+                                        <div class="pwd-hint" [class.pwd-hint--ok]="pwdAllOk"
+                                            [class.pwd-hint--bad]="!pwdAllOk" [class.pwd-hint--swap]="pwdHintSwap">
+                                            {{ pwdHintText }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4" *ngIf="inputContrasena">
+                                    <label class="field">
+                                        <span class="field-label text-white">Confirmar Contraseña</span>
+                                        <div class="input-sleek input-sleek--eye-right">
+                                            <i class="fas fa-lock"></i>
+                                            <input formControlName="confirmPassword" class="sleek-control"
+                                                [type]="hideConfirm ? 'password' : 'text'"
+                                                placeholder="Confirma tu contraseña" autocomplete="new-password"
+                                                autocapitalize="off" spellcheck="false" (input)="onConfirmInput($event)"
+                                                (blur)="onConfirmBlur()" />
+
+                                            <button type="button" class="eyeButton eyeButton--right"
+                                                (mousedown)="$event.preventDefault()" (click)="toggleConfirm()">
+                                                <i class="fas" [ngClass]="hideConfirm ? 'fa-eye' : 'fa-eye-slash'"></i>
+                                            </button>
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                    <div class="pwd-validate" *ngIf="confirmHintVisible">
+                                        <div class="pwd-hint" [class.pwd-hint--ok]="confirmMatch"
+                                            [class.pwd-hint--bad]="!confirmMatch"
+                                            [class.pwd-hint--swap]="confirmHintSwap">
+                                            {{ confirmHintText }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4 mt-2">
+                                    <div class="pf-uploader" [class.has-file]="logoPreviewUrl || logoFileName"
+                                        [class.dragging]="logoDragging" (click)="openLogoFilePicker()"
+                                        (dragover)="onLogoDragOver($event)" (dragleave)="onLogoDragLeave($event)"
+                                        (drop)="onLogoDrop($event)">
+
+                                        <div class="pf-top">
+                                            <div class="pf-title">
+                                                <i class="fas fa-user-circle"></i>
+                                                <span>Imagen Perfil</span>
+                                            </div>
+                                            <div class="pf-badge">3 MB</div>
+                                        </div>
+
+                                        <div class="pf-mid" *ngIf="logoPreviewUrl || logoFileName; else pfEmpty">
+                                            <div class="pf-hero" *ngIf="logoPreviewUrl">
+                                                <img [src]="logoPreviewUrl" alt="Imagen Perfil" />
+                                            </div>
+
+                                            <div class="file-name" *ngIf="logoFileName">{{ logoFileName }}</div>
+
+                                            <div class="pf-actions" (click)="$event.stopPropagation()">
+                                                <button type="button" class="pf-btn pf-btn--primary"
+                                                    (click)="openLogoFilePicker()">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                    <span>Reemplazar</span>
+                                                </button>
+                                                <button type="button" class="pf-btn pf-btn--ghost"
+                                                    (click)="clearLogoImage($event)">
+                                                    <i class="fas fa-trash"></i>
+                                                    <span>Eliminar</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <ng-template #pfEmpty>
+                                            <div class="pf-empty">
+                                                <div class="pf-orb">
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                                <div class="pf-copy">
+                                                    <div class="pf-main">Subir imagen</div>
+                                                    <div class="pf-sub">Arrastra o haz clic · JPG/PNG/WEBP</div>
+                                                </div>
+                                                <div class="pf-cta">
+                                                    <span>Seleccionar</span>
+                                                    <i class="fas fa-arrow-right"></i>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+
+                                        <input type="file" #logoFileInput accept=".jpg,.jpeg,.png,.webp" hidden
+                                            (change)="onLogoFileSelected($event)" />
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12 mt-5">
+                                    <div
+                                        class="title-banner-content d-flex align-items-center justify-content-between flex-wrap p-1 pb-0">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div>
+                                                <h5 class="title-title">Permisos</h5>
+                                                <p class="title-subtitle">Asigna permisos por módulo para este
+                                                    usuario.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="perm-view">
+                                        <div class="perm-module"
+                                            *ngFor="let modulo of listaModulos; trackBy: trackModulo">
+                                            <div class="perm-module__head">
+                                                <div class="perm-module__left">
+                                                    <div class="perm-badge">
+                                                        {{ (modulo?.nombre || 'M') | slice: 0:1 }}
+                                                    </div>
+                                                    <div class="perm-meta">
+                                                        <div class="perm-title text-truncate" [title]="modulo?.nombre">
+                                                            {{ modulo?.nombre }}
+                                                        </div>
+                                                        <div class="perm-sub text-truncate"
+                                                            [title]="modulo?.descripcion || ''">
+                                                            {{ modulo?.descripcion || 'Sin descripción' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="perm-module__right">
+                                                    <label class="sw">
+                                                        <input type="checkbox" [checked]="isModuloCompleto(modulo)"
+                                                            (change)="onToggleModulo(modulo, $any($event.target).checked)" />
+                                                        <span class="sl"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="perm-module__body"
+                                                *ngIf="modulo?.permisos?.length; else noPerms2">
+                                                <div class="perm-chips">
+                                                    <button type="button" class="perm-chip"
+                                                        *ngFor="let permiso of modulo.permisos; trackBy: trackPermiso"
+                                                        [class.is-on]="isPermisoAsignado(permiso?.idPermiso ?? permiso?.id)"
+                                                        (click)="onToggle(permiso, !isPermisoAsignado(permiso?.idPermiso ?? permiso?.id))">
+                                                        <span class="perm-chip__text">
+                                                            {{ permiso?.nombre }}
+                                                        </span>
+                                                        <span class="perm-chip__dot"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <ng-template #noPerms2>
+                                                <div class="perm-empty">Este módulo no tiene permisos</div>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 d-flex justify-content-start gap-3 flex-wrap">
+                        <button (click)="submit()" type="button" class="btn-alt btn-alt--success">
+                            <i class="fas fa-check"></i>
+                            <span>{{ submitButton }}</span>
+                        </button>
+                        <button (click)="regresar()" type="button" class="btn-alt btn-alt--cancel">
+                            <i class="fas fa-times"></i>
+                            <span>Cancelar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container-fluid" [@fadeInRight]>
+    <div class="row">
+        <div class="col-12">
+            <div class="title-banner-card shadow-sm">
+                <div class="title-banner-content d-flex align-items-center justify-content-between flex-wrap p-1 pb-0">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="title-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div>
+                            <h4 class="title-title"> {{title}} </h4>
+                            <p class="title-subtitle">Captura la información requerida para el registro.</p>
+                        </div>
+                    </div>
+                    <div class="title-actions">
+                        <div class="title-tagline">
+                            <span class="line"></span>
+                            <span class="text">Control y configuración centralizada</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 gy-4">
+                    <form [formGroup]="rolForm">
+                        <div class="col-12">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label class="field">
+                                        <span class="field-label text-white">Nombre</span>
+                                        <div class="input-sleek">
+                                            <i class="fas fa-user"></i>
+                                            <input formControlName="nombre" class="sleek-control" type="text"
+                                                placeholder="Nombre completo" />
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="field">
+                                        <span class="field-label text-white">Descripción</span>
+                                        <div class="input-sleek input-sleek--textarea">
+                                            <i class="fas fa-align-left"></i>
+                                            <textarea formControlName="descripcion"
+                                                class="sleek-control sleek-control--textarea" rows="4"
+                                                placeholder="Escribe una breve descripción..."></textarea>
+                                            <span class="sleek-line"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 d-flex justify-content-start gap-3 flex-wrap">
+                        <button (click)="submit()" type="button" class="btn-alt btn-alt--success">
+                            <i class="fas fa-check"></i>
+                            <span>{{submitButton}}</span>
+                        </button>
+                        <button (click)="regresar()" type="button" class="btn-alt btn-alt--cancel">
+                            <i class="fas fa-times"></i>
+                            <span>Cancelar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

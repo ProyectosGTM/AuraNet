@@ -32,12 +32,12 @@
         </div>
       </div>
 
-      <form class="login-form" autocomplete="on" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit($event)" novalidate>
         <label class="field">
           <span class="field-label text-white">Correo</span>
           <div class="field-control">
             <i class="fas fa-envelope"></i>
-            <input formControlName="email" class="custom-input" type="email" placeholder="correo@dominio.com" />
+            <input formControlName="userName" class="custom-input" type="email" placeholder="correo@dominio.com" />
           </div>
         </label>
 
@@ -45,26 +45,22 @@
           <span class="field-label text-white">Contraseña</span>
           <div class="field-control">
             <i class="fas fa-key"></i>
-            <input class="custom-input" formControlName="password" type="password" placeholder="••••••••" />
-            <button type="button" class="icon-btn" aria-label="Mostrar contraseña">
+            <input class="custom-input" [type]="type" formControlName="password" placeholder="••••••••" />
+            <button type="button" class="icon-btn" aria-label="Mostrar contraseña" (click)="myFunctionPasswordCurrent()">
               <i class="fas fa-eye"></i>
             </button>
           </div>
         </label>
 
         <div class="row-actions">
-          <label class="remember">
-            <input type="checkbox" />
-            <span>Recordarme</span>
-          </label>
-
           <a class="link text-white" href="javascript:void(0)">¿Olvidaste tu contraseña?</a>
         </div>
 
-        <button class="btn-accent btn-main" type="submit">
-          <span class="loader" *ngIf="loadingButton"></span>
-          <span class="btn-icon" *ngIf="!loadingButton"><i class="fas fa-arrow-right"></i></span>
-          <span class="textButton">Entrar</span>
+        <button class="btn-accent btn-main" type="submit" [disabled]="loginForm.invalid || loading">
+          <span class="loader" *ngIf="loading"></span>
+          <span class="btn-icon" *ngIf="!loading"><i class="fas fa-arrow-right"></i></span>
+          <span class="textButton" *ngIf="!loading">Entrar</span>
+          <span style="margin-left: 5px;" *ngIf="loading">Cargando...</span>
         </button>
 
         <div class="divider">

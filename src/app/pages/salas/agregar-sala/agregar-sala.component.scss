@@ -1,0 +1,982 @@
+.plano-card {
+  background: linear-gradient(180deg, rgba(14, 19, 34, .92), rgba(9, 12, 22, .96));
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, .45),
+    inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+.plano-head {
+  padding: 16px 16px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  background:
+    radial-gradient(900px 260px at 10% 0%, rgba(255, 26, 91, .22), transparent 60%),
+    radial-gradient(900px 260px at 90% 0%, rgba(0, 209, 255, .16), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, .06), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+}
+
+.plano-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.plano-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(255, 26, 91, .22), rgba(0, 209, 255, .12));
+  border: 1px solid rgba(255, 255, 255, .10);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+  color: #fff;
+}
+
+.plano-txt h5 {
+  margin: 0;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .2px;
+}
+
+.plano-txt p {
+  margin: 2px 0 0;
+  color: rgba(255, 255, 255, .72);
+  font-size: 12.5px;
+}
+
+.plano-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.plano-btn {
+  border: 1px solid rgba(255, 255, 255, .10);
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
+  user-select: none;
+}
+
+.plano-btn i {
+  opacity: .95;
+}
+
+.plano-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, .09);
+  border-color: rgba(255, 255, 255, .18);
+}
+
+.plano-btn:disabled {
+  opacity: .45;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.plano-btn--danger {
+  background: rgba(255, 26, 91, .12);
+  border-color: rgba(255, 26, 91, .28);
+}
+
+.plano-btn--danger:hover {
+  background: rgba(255, 26, 91, .18);
+  border-color: rgba(255, 26, 91, .38);
+}
+
+.plano-btn--ghost {
+  background: rgba(0, 209, 255, .10);
+  border-color: rgba(0, 209, 255, .26);
+}
+
+.plano-btn--ghost:hover {
+  background: rgba(0, 209, 255, .15);
+  border-color: rgba(0, 209, 255, .36);
+}
+
+.plano-wrap {
+  padding: 14px 16px 16px;
+}
+
+.plano-stage-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 14px;
+  align-items: start;
+}
+
+.plano-sep {
+  width: 1px;
+  height: 34px;
+  background: rgba(255, 255, 255, .12);
+  margin: 0 6px;
+}
+
+.zoom-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .10);
+}
+
+.zoom-val {
+  color: rgba(255, 255, 255, .85);
+  font-weight: 900;
+  font-size: 12px;
+  min-width: 58px;
+  text-align: center;
+}
+
+.plano-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .10);
+  color: rgba(255, 255, 255, .92);
+}
+
+.plano-select i {
+  opacity: .95;
+  font-size: 13px;
+}
+
+.plano-select__control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: rgba(255, 255, 255, .92);
+  font-weight: 700;
+  font-size: 12.5px;
+  padding-right: 18px;
+  cursor: pointer;
+}
+
+.plano-select__control option {
+  color: #111;
+}
+
+.plano-select::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid rgba(255, 255, 255, .70);
+  pointer-events: none;
+}
+
+.plano-stage {
+  position: relative;
+  width: 1180px;
+  height: 520px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .10);
+  background:
+    radial-gradient(650px 420px at 15% 25%, rgba(255, 26, 91, .12), transparent 55%),
+    radial-gradient(650px 420px at 85% 75%, rgba(0, 209, 255, .11), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .01)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .045) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .045) 0 1px, transparent 1px 28px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .04),
+    inset 0 -40px 120px rgba(0, 0, 0, .35);
+}
+
+.snap-line {
+  position: absolute;
+  pointer-events: none;
+  z-index: 8;
+  background: rgba(0, 209, 255, .32);
+  box-shadow: 0 0 0 2px rgba(0, 209, 255, .10);
+}
+
+.snap-line--v {
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.snap-line--h {
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.zone {
+  position: absolute;
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 26, 91, .35);
+  background: rgba(255, 255, 255, .005);
+  backdrop-filter: none;
+  box-shadow: none;
+  z-index: 2;
+  user-select: none;
+  touch-action: none;
+}
+.zone.is-selected {
+  border-color: rgba(255, 26, 91, .55);
+  background: rgba(255, 26, 91, .015);
+  box-shadow: 0 0 0 2px rgba(255, 26, 91, .12);
+}
+
+
+.zone-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 0;
+}
+
+.zone-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 26, 91, .10);
+  border: 1px solid rgba(255, 26, 91, .28);
+  color: rgba(255, 255, 255, .92);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.zone-del {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .85);
+}
+
+.zone-resize {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 209, 255, .12);
+  border: 1px solid rgba(0, 209, 255, .25);
+  color: rgba(255, 255, 255, .9);
+}
+
+.machine {
+  position: absolute;
+  border-radius: 16px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  z-index: 6;
+}
+
+.machine:active {
+  cursor: grabbing;
+}
+
+.machine.is-selected {
+  outline: 3px solid rgba(0, 209, 255, .35);
+  box-shadow: 0 0 0 6px rgba(0, 209, 255, .10);
+}
+
+.machine-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .45));
+}
+
+.machine-name {
+  display: none;
+}
+
+
+.mn-chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 210, 106, .12);
+  border: 1px solid rgba(255, 210, 106, .28);
+  color: rgba(255, 255, 255, .92);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.mn-title {
+  color: rgba(255, 255, 255, .88);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mn-input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .06);
+  border-radius: 12px;
+  padding: 8px 10px;
+  color: #fff;
+  font-weight: 800;
+  outline: none;
+}
+
+.machine-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 210px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(15, 20, 35, .95);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, .15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .55);
+  color: #fff;
+  font-size: 12px;
+  z-index: 30;
+}
+
+.tt-title {
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: #ffd26a;
+}
+
+.tt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 0;
+  color: rgba(255, 255, 255, .82);
+}
+
+.tt-row b {
+  color: rgba(255, 255, 255, .92);
+  font-weight: 900;
+}
+
+.machine-handle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 209, 255, .14);
+  border: 1px solid rgba(0, 209, 255, .26);
+  color: rgba(255, 255, 255, .92);
+}
+
+.mini {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .10);
+  background: rgba(255, 255, 255, .04);
+}
+
+.mini-title {
+  padding: 12px 12px 10px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, .90);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.mini-map {
+  position: relative;
+  height: 180px;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .06) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .06) 0 1px, transparent 1px 16px);
+}
+
+.mini-zone {
+  position: absolute;
+  border-radius: 10px;
+  border: 1px dashed rgba(255, 26, 91, .35);
+  background: rgba(255, 26, 91, .08);
+}
+
+.mini-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 209, 255, .65);
+  box-shadow: 0 0 0 3px rgba(0, 209, 255, .14);
+  transform: translate(-50%, -50%);
+}
+
+.mini-door {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 6px;
+  background: rgba(255, 26, 91, .85);
+  box-shadow: 0 0 0 3px rgba(255, 26, 91, .18);
+  transform: translate(-50%, -50%);
+}
+
+.mini-door--exit {
+  background: rgba(67, 255, 155, .85);
+  box-shadow: 0 0 0 3px rgba(67, 255, 155, .18);
+}
+
+.mini-info {
+  padding: 10px 12px 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.mi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, .78);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.mi b {
+  color: rgba(255, 255, 255, .92);
+  font-weight: 900;
+}
+
+.door {
+  cursor: pointer;
+  position: absolute;
+  z-index: 12;
+  width: 130px;
+  height: 54px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 26, 91, .16);
+  border: 1px solid rgba(255, 26, 91, .34);
+  color: rgba(255, 255, 255, .92);
+  font-weight: 900;
+  letter-spacing: .2px;
+  backdrop-filter: blur(12px);
+  transform-origin: 50% 50%;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, .40),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+.door i {
+  font-size: 16px;
+  opacity: .95;
+}
+
+.door span {
+  font-size: 12.5px;
+  font-weight: 900;
+}
+
+.door::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 9px solid rgba(255, 255, 255, .90);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .35));
+  margin-left: 2px;
+}
+
+.door--exit {
+  background: rgba(67, 255, 155, .14);
+  border-color: rgba(67, 255, 155, .30);
+}
+
+.door--exit::after {
+  border-left-color: rgba(255, 255, 255, .90);
+}
+
+.door-pop {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(15, 20, 35, .92);
+  border: 1px solid rgba(255, 255, 255, .14);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .55);
+  backdrop-filter: blur(14px);
+  z-index: 70;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .12s ease, visibility .12s ease;
+}
+
+/* “Puente” invisible para cubrir el gap de 8px */
+.door-pop::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  height: 10px;
+}
+
+/* Mantener visible si hover en puerta O en el popup */
+.door:hover .door-pop,
+.door:focus-within .door-pop,
+.door-pop:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+.door-pop-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .92);
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.door-pop-btn:hover {
+  background: rgba(255, 255, 255, .10);
+  border-color: rgba(255, 255, 255, .22);
+}
+
+.plano-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .10);
+  color: rgba(255, 255, 255, .92);
+}
+
+.plano-select i {
+  opacity: .95;
+  font-size: 13px;
+}
+
+.plano-select__control {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: rgba(255, 255, 255, .92);
+  font-weight: 700;
+  font-size: 12.5px;
+  padding-right: 18px;
+  cursor: pointer;
+}
+
+.plano-select__control option {
+  color: #111;
+}
+
+.plano-select::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid rgba(255, 255, 255, .70);
+  pointer-events: none;
+}
+
+.tt-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tt-edit {
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .92);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  flex: 0 0 auto;
+}
+
+.tt-edit:hover {
+  background: rgba(255, 255, 255, .10);
+  border-color: rgba(255, 255, 255, .22);
+}
+
+.tt-row--rotate {
+  align-items: center;
+}
+
+.tt-rotate {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.tt-rotate-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-width: 44px;
+  height: 36px;
+  padding: 0 10px;
+
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .92);
+}
+
+.tt-rotate-btn--danger {
+  background: rgba(255, 26, 91, .12);
+  border: 1px solid rgba(255, 26, 91, .28);
+  color: rgba(255, 255, 255, .92);
+}
+
+.tt-rotate-btn--danger:hover {
+  background: rgba(255, 26, 91, .18);
+  border-color: rgba(255, 26, 91, .40);
+}
+
+
+.tt-rotate-btn:hover {
+  background: rgba(255, 255, 255, .10);
+  border-color: rgba(255, 255, 255, .22);
+}
+
+.machine-rot {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  border-radius: 16px;
+}
+
+.machine.is-selected {
+  outline: none;
+  box-shadow: none;
+}
+
+.machine.is-selected .machine-rot {
+  outline: 3px solid rgba(0, 209, 255, .35);
+  box-shadow: 0 0 0 6px rgba(0, 209, 255, .10);
+}
+
+.machine-tooltip::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -12px;
+  height: 12px;
+}
+
+.tt-rotate-btn--center {
+  width: auto;
+  padding: 0 10px;
+  gap: 6px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.plano-stage {
+  position: relative;
+  overflow: hidden;
+}
+
+.plano-content {
+  position: absolute;
+  inset: 0;
+  transform-origin: 0 0;
+}
+
+/* ===== Select dropdown (options) ===== */
+.plano-select__control {
+  color-scheme: dark;
+}
+
+/* Soporte general: fondo/colores en dropdown (no todos los browsers lo respetan al 100%) */
+.plano-select__control option {
+  background: #0d121d;
+  color: #ffffff;
+}
+
+/* Hover/selected (algunos browsers lo ignoran, pero donde aplica se ve) */
+.plano-select__control option:hover {
+  background: #1a2233;
+}
+
+.plano-select__control option:checked {
+  background: #162a45;
+  color: #ffffff;
+}
+
+/* Placeholder (el option disabled) */
+.plano-select__control option[disabled] {
+  color: rgba(255, 255, 255, .60);
+}
+
+/* Para Firefox (mejora legibilidad del listado) */
+@-moz-document url-prefix() {
+  .plano-select__control option {
+    background: #0d121d;
+    color: #ffffff;
+  }
+}
+
+
+/* ===========================
+   RESPONSIVE: Plano + acciones
+   (sin cambiar HTML)
+   =========================== */
+
+/* 1) Stage: nunca ancho fijo */
+.plano-stage {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Si tienes una regla duplicada de .plano-stage con width:1180px/1320px, déjala,
+   pero esto la anula por el !important */
+
+/* 2) Contenedor de stage + minimapa */
+.plano-stage-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 14px;
+  align-items: start;
+}
+
+/* 3) En pantallas medianas: minimapa abajo */
+@media (max-width: 992px) {
+  .plano-stage-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .mini {
+    width: 100%;
+  }
+
+  .mini-map {
+    height: 200px;
+  }
+}
+
+/* 4) En pantallas chicas: acciones en columnas, selects a 100%, separadores fuera */
+@media (max-width: 768px) {
+  .plano-head {
+    padding: 14px 14px 12px;
+  }
+
+  .plano-actions {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .plano-select {
+    width: 100%;
+  }
+
+  .plano-select__control {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .zoom-box {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .plano-sep {
+    display: none;
+  }
+
+  /* Botones: que no se aplasten */
+  .plano-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+/* 5) Ultra small: botones full width */
+@media (max-width: 480px) {
+  .plano-btn {
+    width: 100%;
+  }
+
+  .plano-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .zoom-val {
+    min-width: auto;
+  }
+}
+
+/* 6) Tooltip de máquinas: evitar que se salga en móvil */
+@media (max-width: 768px) {
+  .machine-tooltip {
+    left: 8px;
+    right: 8px;
+    transform: none;
+    min-width: 0;
+    width: auto;
+  }
+
+  .machine-tooltip::before {
+    left: 0;
+    right: 0;
+  }
+}
+
+/* 7) Doors: que no se salgan del viewport */
+@media (max-width: 768px) {
+  .door {
+    max-width: 160px;
+  }
+}
+.zone {
+  position: absolute;
+}
+
+.zone-hit {
+  position: absolute;
+  z-index: 5;
+  pointer-events: auto;
+  background: transparent;
+}
+
+/* grosor del "agarre" (invisible) */
+.zone-hit--n,
+.zone-hit--s {
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+
+.zone-hit--n { top: 0; cursor: ns-resize; }
+.zone-hit--s { bottom: 0; cursor: ns-resize; }
+
+.zone-hit--e,
+.zone-hit--w {
+  top: 0;
+  bottom: 0;
+  width: 14px;
+}
+
+.zone-hit--e { right: 0; cursor: ew-resize; }
+.zone-hit--w { left: 0; cursor: ew-resize; }
+
+/* esquinas: un cuadro invisible más cómodo */
+.zone-hit--ne,
+.zone-hit--nw,
+.zone-hit--se,
+.zone-hit--sw {
+  width: 18px;
+  height: 18px;
+}
+
+.zone-hit--ne { top: 0; right: 0; cursor: nesw-resize; }
+.zone-hit--nw { top: 0; left: 0; cursor: nwse-resize; }
+.zone-hit--se { bottom: 0; right: 0; cursor: nwse-resize; }
+.zone-hit--sw { bottom: 0; left: 0; cursor: nesw-resize; }
+
+
+/* El stage ahora es el viewport (su tamaño cambia con zoom) */
+.plano-stage {
+  overflow: hidden;
+}
+
+/* El world mantiene el tamaño lógico real del plano */
+.plano-world {
+  position: relative;
+  width: 1320px;
+  height: 520px;
+  transform-origin: 0 0;
+}
+
+/* Para que el grid/background también escale con zoom,
+   el background debe vivir en el world */
+.plano-world {
+  border-radius: 16px;
+  background:
+    radial-gradient(650px 420px at 15% 25%, rgba(255, 26, 91, .12), transparent 55%),
+    radial-gradient(650px 420px at 85% 75%, rgba(0, 209, 255, .11), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .01)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .045) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .045) 0 1px, transparent 1px 28px);
+}

@@ -8,7 +8,7 @@
                             <i class="fas fa-plus"></i>
                         </div>
                         <div>
-                            <h4 class="title-title">Agregar Permiso</h4>
+                            <h4 class="title-title"> {{title}} </h4>
                             <p class="title-subtitle">Captura la información requerida para el registro.</p>
                         </div>
                     </div>
@@ -26,29 +26,32 @@
                                 <div class="col-12 col-md-4">
                                     <label class="field">
                                         <span class="field-label text-white">Módulo</span>
-                                        <div class="input-sleek select-sleek" [class.is-open]="isTipoOpen" (mousedown)="toggleTipo($event)">
+
+                                        <div class="input-sleek select-sleek" [class.is-open]="isModuloOpen"
+                                            (mousedown)="toggleModulo($event)">
                                             <i class="fas fa-shield-alt"></i>
+
                                             <div class="sleek-control select-display">
                                                 <span class="select-value"
-                                                    [class.placeholder]="!permisoForm.get('tipo')?.value">
-                                                    {{ tipoLabel || 'Selecciona un tipo...' }}
+                                                    [class.placeholder]="!permisoForm.get('idModulo')?.value">
+                                                    {{ moduloLabel || 'Selecciona un módulo...' }}
                                                 </span>
                                             </div>
+
                                             <span class="sleek-line"></span>
-                                            <div class="select-panel" *ngIf="isTipoOpen"
+
+                                            <div class="select-panel" *ngIf="isModuloOpen"
                                                 (mousedown)="$event.stopPropagation()">
                                                 <button type="button" class="select-option"
-                                                    (mousedown)="setTipo('ver', 'Ver', $event)">Ver</button>
-                                                <button type="button" class="select-option"
-                                                    (mousedown)="setTipo('crear', 'Crear', $event)">Crear</button>
-                                                <button type="button" class="select-option"
-                                                    (mousedown)="setTipo('editar', 'Editar', $event)">Editar</button>
-                                                <button type="button" class="select-option"
-                                                    (mousedown)="setTipo('eliminar', 'Eliminar', $event)">Eliminar</button>
+                                                    *ngFor="let m of listaModulos"
+                                                    (mousedown)="setModulo(m.id, m.nombre, $event)">
+                                                    {{ m.nombre }}
+                                                </button>
                                             </div>
                                         </div>
                                     </label>
                                 </div>
+
                                 <div class="col-12 col-md-4">
                                     <label class="field">
                                         <span class="field-label text-white">Nombre</span>
